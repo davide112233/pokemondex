@@ -2,27 +2,73 @@
 @plugin "flowbite-react/plugin/tailwindcss";
 @source "../../.flowbite-react/class-list.json";
 
+* {
+    transition: all 1s ease-in-out;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --primary: #cc0000;
+    --accent: black;
+    --background: #f8f8ff;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html, body {
+    @apply overflow-x-hidden;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    @apply container mx-auto;
+}
+
+main {
+    @apply flex flex-col min-h-screen gap-5 grow;
+    background-color: var(--background);
+    color: var(--accent);
+}
+
+input[type="text"] {
+    @apply p-3 rounded-lg shadow-lg border-2;
+    border-color: var(--accent);
+}
+
+.search-pokemon-form input[type="text"]::placeholder {
+    @apply capitalize;
+}
+
+.search-form-box {
+    @apply flex flex-col min-h-screen justify-start align-middle 2xl:p-5 p-0;
+}
+
+.search-pokemon-form {
+    @apply flex 2xl:flex-row flex-col sm:flex-row md:flex-row lg:flex-row justify-center align-middle 2xl:gap-5 gap-4 2xl:p-0 p-8;
+}
+
+.search-pokemon-button-box {
+    @apply flex flex-row justify-center items-center;
+}
+
+button {
+    @apply cursor-pointer uppercase text-center tracking-wide px-5 py-2.5;
+    background-color: var(--primary);
+}
+
+.search-pokemon-form input[type="text"] {
+    @apply 2xl:w-80 sm:w-80 md:w-80 lg:w-80;
+}
+
+.search-pokemon-button {
+    @apply 2xl:w-fit w-36;
+}
+
+.pokemon-output {
+    @apply absolute w-full flex justify-center 2xl:top-26 sm:top-28 md:top-26 top-40 left-0;
+}
+
+.pokemon-image-box {
+    @apply p-3 cursor-pointer rounded-lg shadow-lg;
+    background-color: var(--primary);
+}
+
+.pokemon-image {
+    @apply object-cover w-52;
 }
