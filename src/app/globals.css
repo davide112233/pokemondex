@@ -13,7 +13,7 @@
 }
 
 html, body {
-    @apply overflow-x-hidden;
+    @apply overflow-x-hidden scroll-smooth;
 }
 
 body {
@@ -24,6 +24,25 @@ main {
     @apply flex flex-col min-h-screen gap-5 grow;
     background-color: var(--background);
     color: var(--accent);
+}
+
+.navigation-bar {
+    @apply p-5 shadow-lg;
+    background-color: var(--primary);
+}
+
+.navbar-brand {
+    @apply capitalize 2xl:text-2xl;
+    color: var(--background);
+}
+
+.navbar-link {
+    color: var(--background);
+    @apply capitalize;
+}
+
+.burger-button {
+    color: var(--background);
 }
 
 input[type="text"] {
@@ -61,7 +80,7 @@ button {
 }
 
 .pokemon-output {
-    @apply absolute w-full flex justify-center 2xl:top-26 sm:top-28 md:top-26 top-40 left-0;
+    @apply absolute w-full flex justify-center 2xl:top-48 sm:top-56 md:top-52 top-66 left-0;
 }
 
 .pokemon-image-box {
@@ -70,5 +89,20 @@ button {
 }
 
 .pokemon-image {
-    @apply object-cover w-52;
+    @apply object-cover w-64;
+    transition: all 0.52s ease-out;
+}
+
+.pokemon-image:hover {
+    transform: scale(1.1);
+}
+
+.pokemon-buttons-card-box {
+    @apply flex justify-end w-full cursor-default;
+}
+
+.close-pokemon-card-button {
+    @apply w-fit text-4xl p-0;
+    color: var(--background);
+    background-color: transparent;
 }

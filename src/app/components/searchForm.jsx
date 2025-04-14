@@ -1,15 +1,18 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
 import { Button } from 'flowbite-react';
 import usePokemonStore from '../utils/pokemonStore';
 import DOMPurify from "isomorphic-dompurify";
 
 export default function SearchForm() {
-    const { search, setSearch, fetchPokemon } = usePokemonStore();
+    const { search, setSearch, fetchPokemon, pokemon } = usePokemonStore();
+    const inputRef = useRef(null);
 
-    const handleSearch = () => {
+    const handleSearch = async () => {
         if (search.trim() !== '') {
-            fetchPokemon(search);
+            await fetchPokemon(search);
+            setSearch('');
         }
     };
 
@@ -25,22 +28,30 @@ export default function SearchForm() {
         handleSearch();
     };
 
-    const searchPokemonPlaceholder = "type the pokemon";
-    const searchPokemonButton = "search";
+    useEffect(() => {
+        if (!pokemon && inputRef.current) {
+            inputRef.current.focus();
+        }
+    }, [pokemon]);
 
     return (
         <div className="search-form-box">
             <form className="search-pokemon-form" autoComplete='off' onSubmit={handleSubmit}>
                 <input
+                    ref={inputRef}
                     type="text"
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                     onKeyDown={handleKeyDown}
                     required
-                    placeholder={DOMPurify.sanitize(searchPokemonPlaceholder)}
+                    placeholder={DOMPurify.sanitize("type the pokemon")}
                 />
                 <div className="search-pokemon-button-box">
-                    <Button type="submit" className='search-pokemon-button' dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(searchPokemonButton) }} />
+                    <Button
+                        type="submit"
+                        className='search-pokemon-button'
+                        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize("search") }}
+                    />
                 </div>
             </form>
         </div>

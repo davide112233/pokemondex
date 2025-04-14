@@ -9,6 +9,10 @@ const usePokemonStore = create((set) => ({
     loading: false,
     error: null,
 
+    showModal: false,
+    openModal: () => set({ showModal: true }),
+    closeModal: () => set({ showModal: false }),
+
     fetchPokemon: async (name) => {
         set({ loading: true, error: null });
         try {
@@ -18,6 +22,8 @@ const usePokemonStore = create((set) => ({
             set({ error: 'Pokémon not found', pokemon: null, loading: false });
         }
     },
+
+    closePokemonCard: () => set({ pokemon: null, search: '', showModal: false }),
 }));
 
 export default usePokemonStore;

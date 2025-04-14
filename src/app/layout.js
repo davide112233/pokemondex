@@ -1,6 +1,14 @@
 import "./globals.css";
 import DOMPurify from "isomorphic-dompurify";
 import { metadata } from "./utils/metaData";
+import { Press_Start_2P } from 'next/font/google';
+
+const pressStart2P = Press_Start_2P({
+  subsets: ['latin'],
+  weight: '400',
+  display: 'swap',
+  variable: '--font-press-start-2p',
+});
 
 export default function RootLayout({ children }) {
   return (
@@ -14,7 +22,7 @@ export default function RootLayout({ children }) {
         <meta name="viewport" content={DOMPurify.sanitize(metadata.viewport)} />
         <meta name="type" content={DOMPurify.sanitize(metadata.type)} />
       </head>
-      <body>
+      <body className={pressStart2P.className}>
         {children}
       </body>
     </html>
