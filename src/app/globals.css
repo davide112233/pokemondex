@@ -37,8 +37,16 @@ main {
 }
 
 .navbar-link {
-    color: var(--background);
     @apply capitalize;
+}
+
+.navbar-link.not-active {
+    color: var(--background);
+}
+
+.navbar-link.active {
+    @apply underline font-bold underline-offset-4;
+    color: var(--background);
 }
 
 .burger-button {
@@ -101,8 +109,62 @@ button {
     @apply flex justify-end w-full cursor-default;
 }
 
+.modal {
+    @apply fixed inset-0 z-50 flex items-center justify-center;
+    background-color: var(--accent);
+}
+
+.inner-modal {
+    @apply rounded-xl shadow-lg overflow-y-auto 2xl:w-2/3 sm:w-2/3 2xl:h-fit lg:h-fit sm:h-full md:h-full flex flex-col justify-center items-center p-3;
+}
+
+.modal-header {
+    @apply w-full flex justify-between items-center;
+}
+
+.pokemon-modal-title {
+    @apply capitalize;
+    color: var(--background);
+}
+
+.pokemon-modal-image {
+    @apply 2xl:w-64 w-44 object-cover;
+}
+
+.pokemon-modal-close-button {
+    @apply text-2xl p-2;
+    background-color: transparent;
+    color: var(--background);
+}
+
+.pokemon-modal-list {
+    @apply flex flex-col gap-3 w-full mt-8;
+}
+
+.pokemon-modal-list-item {
+    @apply flex gap-3;
+    color: var(--background);
+}
+
 .close-pokemon-card-button {
     @apply w-fit text-4xl p-0;
     color: var(--background);
     background-color: transparent;
+}
+
+.pokemon-grid {
+    @apply flex flex-wrap 2xl:gap-8 gap-5 justify-center items-center p-5;
+}
+
+.pokemon-grid-card {
+    @apply w-fit cursor-pointer;
+}
+
+.pokemon-card-name {
+    @apply text-center capitalize;
+    color: var(--background);
+}
+
+.pokemon-card-image {
+    @apply w-64 object-cover;
 }

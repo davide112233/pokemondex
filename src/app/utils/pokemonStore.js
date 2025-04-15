@@ -6,6 +6,7 @@ const usePokemonStore = create((set) => ({
     setSearch: (value) => set({ search: value }),
 
     pokemon: null,
+    pokemons: [],
     loading: false,
     error: null,
 
@@ -20,6 +21,25 @@ const usePokemonStore = create((set) => ({
             set({ pokemon: res.data, loading: false });
         } catch (err) {
             set({ error: 'Pokémon not found', pokemon: null, loading: false });
+        }
+    },
+
+    fetchInitialPokemons: async () => {
+        set({ loading: true, error: null });
+        try {
+            const res = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=151');
+            const promises = res.data.results.map(async (pokemon) => {
+                const details = await axios.get(pokemon.url); // fetch full Pokémon data
+                return {
+                    name: details.data.name,
+                    id: details.data.id,
+                    image: details.data.sprites.other['home'].front_default, // proper image from API
+                };
+            });
+            const pokemons = await Promise.all(promises);
+            set({ pokemons, loading: false });
+        } catch (err) {
+            set({ error: 'Failed to load Pokémon', pokemons: [], loading: false });
         }
     },
 
