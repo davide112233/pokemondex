@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Button } from "flowbite-react";
 import usePokemonStore from "../utils/pokemonStore";
 import typeColors from "../utils/typeColors";
@@ -16,24 +17,36 @@ export default function PokemonModal() {
 
     return (
         <div className="modal">
-            <div
-                className="inner-modal"
-                style={{ backgroundColor }}
-            >
+            <div className="inner-modal" style={{ backgroundColor }}>
                 <div className="modal-header">
                     <h2 className="pokemon-modal-title">{pokemon.name}</h2>
-                    <Button className="pokemon-modal-close-button" onClick={closeModal}><IoIosCloseCircleOutline /></Button>
+                    <Button className="pokemon-modal-close-button" onClick={closeModal}>
+                        <IoIosCloseCircleOutline />
+                    </Button>
                 </div>
-                <img
-                    src={pokemon.sprites.other.home.front_default}
-                    alt={pokemon.name}
-                    className="pokemon-modal-image"
-                />
+                <div className="pokemon-modal-image-wrapper">
+                    <Image
+                        src={pokemon.sprites.other.home.front_default}
+                        alt={pokemon.name}
+                        width={250}
+                        height={250}
+                        className="pokemon-modal-image"
+                        unoptimized
+                    />
+                </div>
                 <ul className="pokemon-modal-list">
                     {pokemon.stats.map((stat) => (
                         <li key={stat.stat.name} className="pokemon-modal-list-item">
-                            <span dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(stat.stat.name) }} />
-                            <span dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(stat.base_stat) }} />
+                            <span
+                                dangerouslySetInnerHTML={{
+                                    __html: DOMPurify.sanitize(stat.stat.name),
+                                }}
+                            />
+                            <span
+                                dangerouslySetInnerHTML={{
+                                    __html: DOMPurify.sanitize(stat.base_stat),
+                                }}
+                            />
                         </li>
                     ))}
                 </ul>

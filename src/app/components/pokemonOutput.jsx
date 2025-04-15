@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import usePokemonStore from "../utils/pokemonStore";
 import typeColors from "../utils/typeColors";
 import { IoIosCloseCircleOutline } from "react-icons/io";
@@ -25,12 +26,16 @@ export default function PokemonOutput() {
                             <IoIosCloseCircleOutline size={24} />
                         </button>
                     </div>
-                    <img
-                        className="pokemon-image"
-                        src={pokemon.sprites.other.home.front_default}
-                        alt={pokemon.name}
-                        onClick={openModal}
-                    />
+                    <div onClick={openModal} className="pokemon-image-wrapper">
+                        <Image
+                            src={pokemon.sprites.other.home.front_default}
+                            alt={pokemon.name}
+                            width={200}
+                            height={200}
+                            className="pokemon-image"
+                            unoptimized
+                        />
+                    </div>
                 </div>
             </div>
 

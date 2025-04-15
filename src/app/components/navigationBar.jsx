@@ -13,7 +13,7 @@ import DOMPurify from "isomorphic-dompurify";
 
 export default function NavigationBar() {
     const pathname = usePathname();
-    const navbarBrand = "pokedex";
+    const navbarBrand = "pokemondex";
 
     const navbarLinks = [
         { label: "pokemons", path: "/" },

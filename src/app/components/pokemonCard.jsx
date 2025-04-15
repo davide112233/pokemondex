@@ -5,6 +5,7 @@ import typeColors from "../utils/typeColors";
 import PokemonPagination from "./pokemonPagination";
 import { useRouter } from "next/navigation";
 import LoadingPokemonsSpinner from "./loadingSpinner";
+import Image from "next/image"; // ✅ Import next/image
 
 const PokemonGrid = () => {
     const { pokemons, fetchInitialPokemons, loading, error, currentPage, itemsPerPage } = usePokemonStore();
@@ -16,11 +17,9 @@ const PokemonGrid = () => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const paginatedPokemons = pokemons.slice(startIndex, startIndex + itemsPerPage);
 
-    if (loading) return (
-        <LoadingPokemonsSpinner />
-    );
-
     const router = useRouter();
+
+    if (loading) return <LoadingPokemonsSpinner />;
 
     return (
         <div id="pokemonCardGrid">
@@ -30,21 +29,38 @@ const PokemonGrid = () => {
                     const bgColor = typeColors[primaryType] || "#dddddd";
                     const pokemonDetails = () => {
                         router.push(`/pokemonDetails/${pokemon.id}`);
-                    }
+                    };
                     return (
                         <div
                             key={pokemon.id}
                             className="pokemon-card-grid"
                             style={{ backgroundColor: bgColor }}
                         >
-                            <h5 className="pokemon-card-name" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(pokemon.name) }} />
-                            <img src={pokemon.image} alt={pokemon.name} onClick={pokemonDetails} className="pokemon-card-image" />
+                            <h5
+                                className="pokemon-card-name"
+                                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(pokemon.name) }}
+                            />
+                            <div onClick={pokemonDetails} className="pokemon-card-image-wrapper">
+                                <Image
+                                    src={pokemon.image}
+                                    alt={pokemon.name}
+                                    width={150}
+                                    height={150}
+                                    className="pokemon-card-image"
+                                    unoptimized
+                                />
+                            </div>
                         </div>
                     );
                 })}
             </div>
             <PokemonPagination />
-            {error && <p className="pokemon-loading-error-message" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(error) }} />}
+            {error && (
+                <p
+                    className="pokemon-loading-error-message"
+                    dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(error) }}
+                />
+            )}
         </div>
     );
 };

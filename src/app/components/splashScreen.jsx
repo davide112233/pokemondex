@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import { useSplashStore } from '../utils/splashStore';
+import LoadingPokemonsSpinner from './loadingSpinner';
 
 export default function SplashScreen() {
     const { isSplashVisible, hideSplash } = useSplashStore();
@@ -17,7 +18,7 @@ export default function SplashScreen() {
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black text-white text-center text-xl font-bold">
-            <span>Loading...</span>
+            <LoadingPokemonsSpinner />
         </div>
     );
 }
