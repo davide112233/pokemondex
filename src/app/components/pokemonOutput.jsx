@@ -26,7 +26,7 @@ export default function PokemonOutput() {
                         </button>
                     </div>
                     <img
-                        className="pokemon-image cursor-pointer"
+                        className="pokemon-image"
                         src={pokemon.sprites.other.home.front_default}
                         alt={pokemon.name}
                         onClick={openModal}

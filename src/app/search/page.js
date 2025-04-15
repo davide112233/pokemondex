@@ -9,12 +9,14 @@ export default function Search() {
     const { pokemon, loading, error } = usePokemonStore();
 
     return (
-        <main>
+        <>
             <NavigationBar />
-            <SearchForm />
-            {pokemon && !loading && (
-                <PokemonOutput />
-            )}
-        </main>
+            <main>
+                <SearchForm />
+                {pokemon && !loading && (
+                    <PokemonOutput />
+                )}
+            </main>
+        </>
     );
 }

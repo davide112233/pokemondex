@@ -2,6 +2,7 @@ import "./globals.css";
 import DOMPurify from "isomorphic-dompurify";
 import { metadata } from "./utils/metaData";
 import { Press_Start_2P } from 'next/font/google';
+import SplashScreen from "./components/splashScreen";
 
 const pressStart2P = Press_Start_2P({
   subsets: ['latin'],
@@ -23,6 +24,7 @@ export default function RootLayout({ children }) {
         <meta name="type" content={DOMPurify.sanitize(metadata.type)} />
       </head>
       <body className={pressStart2P.className}>
+        <SplashScreen />
         {children}
       </body>
     </html>

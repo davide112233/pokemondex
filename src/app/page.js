@@ -5,9 +5,11 @@ import PokemonGrid from "./components/pokemonCard";
 
 export default function Home() {
   return (
-    <main>
+    <>
       <NavigationBar />
-      <PokemonGrid />
-    </main>
+      <main>
+        <PokemonGrid />
+      </main>
+    </>
   );
 }

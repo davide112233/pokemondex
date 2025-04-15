@@ -16,12 +16,8 @@ html, body {
     @apply overflow-x-hidden scroll-smooth;
 }
 
-body {
-    @apply container mx-auto;
-}
-
 main {
-    @apply flex flex-col min-h-screen gap-5 grow;
+    @apply flex flex-col min-h-screen gap-5 grow container mx-auto;
     background-color: var(--background);
     color: var(--accent);
 }
@@ -97,7 +93,7 @@ button {
 }
 
 .pokemon-image {
-    @apply object-cover w-64;
+    @apply object-cover w-64 cursor-pointer;
     transition: all 0.52s ease-out;
 }
 
@@ -152,12 +148,25 @@ button {
     background-color: transparent;
 }
 
-.pokemon-grid {
-    @apply flex flex-wrap 2xl:gap-8 gap-5 justify-center items-center p-5;
+#pokemonCardGrid, #pokemonDetails {
+    @apply flex flex-col items-center p-5;
 }
 
-.pokemon-grid-card {
-    @apply w-fit cursor-pointer;
+.pokemon-loading-error-message {
+    color: var(--primary);
+    @apply text-center capitalize font-bold;
+}
+
+.loading-spinner-box {
+    @apply flex justify-center p-3;
+}
+
+.pokemon-grid {
+    @apply flex flex-wrap 2xl:gap-8 gap-5 2xl:justify-start justify-center items-center p-5;
+}
+
+.pokemon-card-grid {
+    @apply 2xl:w-80 lg:w-80 sm:w-64 md:w-72 w-full 2xl:h-80 lg:h-80 h-80 sm:h-64 md:h-72 cursor-pointer border-0 object-cover p-3 rounded-lg shadow-lg flex flex-col items-center gap-3;
 }
 
 .pokemon-card-name {
@@ -166,5 +175,42 @@ button {
 }
 
 .pokemon-card-image {
-    @apply w-64 object-cover;
+    @apply w-52 sm:w-44 md:w-52 object-cover cursor-pointer;
+    transition: all 0.5s ease-out;
+}
+
+.pokemon-card-image:hover {
+    transform: scale(1.23);
+}
+
+#pokemonDetails h1 {
+    color: var(--background);
+    @apply 2xl:text-start lg:text-start md:text-start sm:text-start text-center capitalize 2xl:text-4xl text-2xl w-full;
+}
+
+.pokemon-details-info {
+    @apply flex 2xl:flex-row lg:flex-row md:flex-row sm:flex-row flex-col 2xl:justify-between lg:justify-between md:justify-between sm:justify-between justify-center 2xl:gap-0 gap-3 w-full items-start mt-3 p-5;
+}
+
+.pokemon-image-details-box {
+    @apply flex flex-col justify-start sm:items-start md:items-start items-center 2xl:w-fit w-full;
+}
+
+.pokemon-image-details-box img {
+    @apply w-60 object-cover cursor-pointer;
+    transition: all 0.5s ease-out;
+}
+
+.pokemon-image-details-box img:hover {
+    transform: scale(1.1);
+}
+
+.pokemon-info-box, .pokemon-image-details-box {
+    @apply p-5 flex flex-col gap-3 border-4 rounded-lg;
+    color: var(--background);
+    border-color: var(--background);
+}
+
+.pokemon-info-box p {
+    @apply 2xl:text-start lg:text-start sm:text-start md:text-start text-center capitalize;
 }
