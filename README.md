@@ -6,7 +6,7 @@ Ho sviluppato un pokedex completo, dove si possono sfogliare i pokemon e vederne
 - implementazione del form per cercare il pokemon, una volta che si preme sul pulsante search il contenuto testuale del box di ricerca si resetterà e verrà mostrata la card del pokemon cercato che comparirà sotto al form di ricerca
 - realizzazione della vista responsive per i telefoni e i tablet
 
-# Tecnologie utilizzate:
+# Tecnologie utilizzate
 - NextJS
 - ReactJS
 - Javascript
@@ -16,7 +16,7 @@ Ho sviluppato un pokedex completo, dove si possono sfogliare i pokemon e vederne
 - Zustand
 - PokéAPI
 
-# Immagini:
+# Immagini
 
 ![Landing](public/screenshots/landing.png)
 
