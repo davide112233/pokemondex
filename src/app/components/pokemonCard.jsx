@@ -5,7 +5,7 @@ import typeColors from "../utils/typeColors";
 import PokemonPagination from "./pokemonPagination";
 import { useRouter } from "next/navigation";
 import LoadingPokemonsSpinner from "./loadingSpinner";
-import Image from "next/image"; // ✅ Import next/image
+import Image from "next/image";
 
 const PokemonGrid = () => {
     const { pokemons, fetchInitialPokemons, loading, error, currentPage, itemsPerPage } = usePokemonStore();
@@ -24,7 +24,7 @@ const PokemonGrid = () => {
     return (
         <div id="pokemonCardGrid">
             <div className="pokemon-grid">
-                {paginatedPokemons.map((pokemon) => {
+                {paginatedPokemons.map((pokemon, index) => {
                     const primaryType = pokemon.types?.[0];
                     const bgColor = typeColors[primaryType] || "#dddddd";
                     const pokemonDetails = () => {
@@ -47,7 +47,6 @@ const PokemonGrid = () => {
                                     width={150}
                                     height={150}
                                     className="pokemon-card-image"
-                                    unoptimized
                                 />
                             </div>
                         </div>
