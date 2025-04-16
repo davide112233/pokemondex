@@ -16,7 +16,7 @@ Ho sviluppato un pokedex completo, dove si possono sfogliare i pokemon e vederne
 - Zustand
 - PokéAPI
 
-# Ecco alcune immagini:
+# Immagini:
 
 ![Landing](public/screenshots/landing.png)
 
