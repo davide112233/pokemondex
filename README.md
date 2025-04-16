@@ -7,6 +7,7 @@ Ho sviluppato un pokedex completo, dove si possono sfogliare i pokemon e vederne
 - realizzazione della vista responsive per i telefoni e i tablet
 
 # Tecnologie utilizzate:
+- NextJS
 - ReactJS
 - Javascript
 - Tailwind
