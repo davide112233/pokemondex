@@ -15,8 +15,13 @@ Ho sviluppato un pokedex completo, dove si possono sfogliare i pokemon e vederne
 - PokéAPI
 
 # Ecco alcune immagini:
+
 ![Landing](public/screenshots/landing.png)
+
 ![Pagination](public/screenshots/pagination.png)
+
 ![DetailsPage](public/screenshots/detailsPage.png)
+
 ![SearcherPage](public/screenshots/searcherPage.png)
+
 ![PokemondexModal](public/screenshots/pokemondexModal.png)
